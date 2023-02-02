@@ -1,5 +1,6 @@
 import json
 import os
+
 import requests
 from dateutil import parser
 from dotenv import load_dotenv
@@ -67,12 +68,12 @@ def get_encode_data(data):
 
 
 def main():
-    while(True):
+    while (True):
         # Input for the station id
         print("To stop enter q")
         station_id = input("Enter Station id:")
         # Retrieve the data for the provided station id
-        if(station_id.lower() == 'q'):
+        if (station_id.lower() == 'q'):
             break
         unencrypted_data = get_data_by_station_id(station_id)
 
@@ -87,9 +88,11 @@ def main():
             # Get the measurement time
             measurement_time = get_measurement_time(encode_data)
 
-            print(f"The amount of rain in {station_name} is {amount_of_rain}. The measurement time is {measurement_time} ")
+            print(
+                f"The amount of rain in {station_name} is {amount_of_rain}mm. The measurement time is {measurement_time} ")
         else:
             print("Station Id is wrong")
+
 
 if __name__ == '__main__':
     main()
