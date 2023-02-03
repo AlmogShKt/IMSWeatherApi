@@ -78,7 +78,7 @@ def main():
         unencrypted_data = get_data_by_station_id(station_id)
 
         # If data is returned
-        if (unencrypted_data.text):
+        if unencrypted_data.text:
             # Decode the data
             encode_data = get_encode_data(unencrypted_data)
             # Get the station name
