@@ -1,15 +1,28 @@
-# MSI Weather API
-
-![iomg](https://github.com/AlmogShKt/IMSWeatherApi/blob/master/WeatherLogo.png)
-___
+<h1 align="center">
+  <br>
+  <img src="https://github.com/AlmogShKt/IMSWeatherApi/blob/master/WeatherLogo.png" alt="WeatherMsiApiLogo" width="200"></a>
+  <br> MSI Weather API  <br>
+</h1>
 
 <p align="center">
   <a href="#features">Features</a> •
   <a href="#how-to-use">How To Use</a> •
-  <a href="#download">Download</a> •
+  <a href="#stations-id">Stations ID</a> •
+  <a href="#rights">Rights</a> •
 </p>
 
-## Receive the following data from IMS stations:
+## About
+Are you interested in keeping up with the local weather?
+*Do you woundring when there is snow on the ground?
+* Do you woundring if to book a placinIn El-rom?
+* Are you tired of opening telegram groups and weather apps on your phone?  
+> You are in the right place!  
+
+By using this project, you can easily get a weather update on your terminal, at any of the IMS measurement stations.
+
+___
+## Features
+*Receive the following data from IMS stations:
   * Measurement time
   * Rain amount (mm)
   * Ground temperature(°)
@@ -35,9 +48,24 @@ ___
 5. Open terminal and run:  
 `cd /yourLocalPath/WeatherApi/`  
 `python3 main.py`
+
+6. Enter the statin id you wish to follow, and enjoy!
+
+Example of result:
+```
+_________________________
+Station Name: merom golan picman | id: 10
+Measurement time is: 15:40:00
+The amount of rain is: 10.2mm
+The Max temperature is: -1.5°
+The Min temperature is: -2.1°
+The ground temperature is: -1.4°
+**There is snow conditions!!**"
+_________________________
+```
 ___
 
-## Station Id:
+## Stations ID
 Station Name  | Station ID
 --------------|----------
 AVNE ETAN     | 2
@@ -202,8 +230,8 @@ MIZPE RAMON | 379
 TEL YOSEF_1m | 443
 ASHALIM_1m | 480
 DAFNA_1m | 498
-
-
 ___
-  # Rights
- * Using IMS API - all rights reserve to [IMS]("https://ims.gov.il/he")
+
+# Rights
+
+* Using IMS API - all rights reserve to ©[IMS]("https://ims.gov.il/he")
