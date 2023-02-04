@@ -235,4 +235,4 @@ ___
 
 # Rights
 
-* Using IMS API - all rights reserve to ©[IMS]("https://ims.gov.il/he")
+* Using IMS API - all rights reserve to ©<a href ="https://ims.gov.il/he">IMS<a/>
