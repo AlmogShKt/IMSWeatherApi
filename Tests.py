@@ -1,8 +1,7 @@
-from dateutil import parser
-Time = '2023-02-02T21:00:00+02:00'
-print(parser.isoparse(Time).time())
+temperature_data = {}
+temperature_data.update({12:'aa'})
 
 
-
-
-
+if 122 in temperature_data.keys():
+    print("there")
+print(temperature_data.keys())

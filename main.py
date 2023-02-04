@@ -26,8 +26,28 @@ class TokenData:
 
 # Instance of the TokenData class
 my_token = TokenData()
-# Print the headers containing the token
-print(my_token.get_headers())
+
+
+# Function to decode the response from the API
+def get_encode_data(data):
+    return json.loads(data.text.encode('utf8'))
+
+
+def get_all_stations():
+    url = f"https://api.ims.gov.il/v1/envista/stations/"
+    stations_data = get_encode_data(requests.request("GET", url, headers=my_token.get_headers()))
+    all_stations = {"station name": "station id"}
+    for station in stations_data:
+        all_stations.update({station['name']: station['stationId']})
+
+    return all_stations
+
+
+def print_station_names(all_stations):
+    print("The stations are:")
+    for station_name, station_id in all_stations.items():  # dct.iteritems() in Python 2
+        print("{} - {}".format(station_name, station_id))
+    print('\n \n')
 
 
 # Function to retrieve data from API for the provided station id
@@ -64,31 +84,45 @@ def get_station_name(station_id):
 
 def get_temp(encode_data):
     temperature_data = {}
+
+    measurements_values = ['TDmax', "TDmin", "TG"]
+
     for channel_id in encode_data['data'][0]['channels']:
-        if channel_id['name'] == 'TDmax':
+        if channel_id['name'] == measurements_values[0]:
             # TDMax - max temp
             temperature_data.update({channel_id['name']: channel_id['value']})
-        if channel_id['name'] == 'TDmin':
+        if channel_id['name'] == measurements_values[1]:
             # TDMax - max temp
             temperature_data.update({channel_id['name']: channel_id['value']})
-        if channel_id['name'] == 'TG':
+        if channel_id['name'] == measurements_values[2]:
             # TDMax - max temp
             temperature_data.update({channel_id['name']: channel_id['value']})
+
+    if len(temperature_data) != 3:
+        for key in measurements_values:
+            if key not in temperature_data.keys():
+                temperature_data.update({key: "missing"})
 
     return temperature_data
 
-def is_snow_conditions(temperature_data,amount_of_rain):
+
+def is_snow_conditions(temperature_data, amount_of_rain):
     if amount_of_rain > 0.0 and temperature_data['TG']:
         return True
     else:
         return False
 
-# Function to decode the response from the API
-def get_encode_data(data):
-    return json.loads(data.text.encode('utf8'))
+
+get_all_stations()
 
 
 def main():
+    to_print_station_name = input("Do you want to print all stations name: (only once) Y/N:")
+    if to_print_station_name.lower() == 'y':
+        all_stations = get_all_stations()
+        print_station_names(all_stations)
+    else:
+        print("You can Find all station names and id here: ")
     while True:
         # Input for the station id
         print("To stop enter 'q'")
@@ -100,33 +134,36 @@ def main():
 
         # If data is returned
         if unencrypted_data.text:
-            # Decode the data
-            encode_data = get_encode_data(unencrypted_data)
-            # Get the station name
-            station_name = (get_station_name(station_id)).lower()
-            # Get the amount of rain
-            amount_of_rain = get_rain_value(encode_data)
-            # Get the measurement time
-            measurement_time = get_measurement_time(encode_data)
-            # Get the temperature data
-            temperature_data = get_temp(encode_data)
-            # Check if there is conditions for snow
-            is_snowing = is_snow_conditions(temperature_data,amount_of_rain)
+            try:
+                # Decode the data
+                encode_data = get_encode_data(unencrypted_data)
+                # Get the station name
+                station_name = (get_station_name(station_id)).lower()
+                # Get the amount of rain
+                amount_of_rain = get_rain_value(encode_data)
+                # Get the measurement time
+                measurement_time = get_measurement_time(encode_data)
+                # Get the temperature data
+                temperature_data = get_temp(encode_data)
+                # Check if there is conditions for snow
+                is_snowing = is_snow_conditions(temperature_data, amount_of_rain)
 
-            print('\n \n')
-            print("_________________________")
-            print(f"Station Name: {station_name} | id: {station_id}")
-            print(f"Measurement time is: {measurement_time}")
-            print(f"The amount of rain is: {amount_of_rain}mm")
-            print(f"The Max temperature is: {temperature_data['TDmax']}°")
-            print(f"The Min temperature is: {temperature_data['TDmin']}°")
-            print(f"The ground temperature is: {temperature_data['TG']}°")
-            if is_snowing:
-                print("**There is snow conditions!!**")
-            print("_________________________")
-            print('\n \n')
-        else:
-            print("Station Id is wrong")
+                print('\n \n')
+                print("_________________________")
+                print(f"Station Name: {station_name} | id: {station_id}")
+                print(f"Measurement time is: {measurement_time}")
+                print(f"The amount of rain is: {amount_of_rain}mm")
+                print(f"The Max temperature is: {temperature_data['TDmax']}°")
+                print(f"The Min temperature is: {temperature_data['TDmin']}°")
+                print(f"The ground temperature is: {temperature_data['TG']}°")
+                if is_snowing:
+                    print("**There is snow conditions!!**")
+                print("_________________________")
+                print('\n \n')
+            except:
+                print("Error - please choose different station")
+            else:
+                print("Station Id is wrong")
 
 
 if __name__ == '__main__':
