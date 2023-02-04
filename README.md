@@ -40,7 +40,8 @@ ___
     pip install python-dotenv
     ```
 
-3. Ask for ApiToken from MSI: [Email]("mailto:ims@ims.gov.il") , and follow the [instructions]("https://ims.gov.il/he/ObservationDataAPI")
+3. Ask for ApiToken from MSI: <a href="mailto:ims@ims.gov.il">Email</a> , and follow the <a href = "https://ims.gov.il/he/ObservationDataAPI)">instructions</a>
+
 
 4. Open new file, called `.env` and enter this line:  
 `IMS_TOKEN = ApiToken replace_with_your_token`
@@ -49,7 +50,7 @@ ___
 `cd /yourLocalPath/WeatherApi/`  
 `python3 main.py`
 
-6. Enter the statin id you wish to follow, and enjoy!
+6. Enter the station id you wish to follow, and enjoy!
 
 Example of result:
 ```
