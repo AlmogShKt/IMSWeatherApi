@@ -127,6 +127,7 @@ def main():
         # Input for the station id
         print("To stop enter 'q'")
         station_id = input("Enter Station id:")
+        print("Please wait while retreiving the data")
         # Retrieve the data for the provided station id
         if (station_id.lower() == 'q'):
             break
