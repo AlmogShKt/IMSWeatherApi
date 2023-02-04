@@ -107,7 +107,7 @@ def get_temp(encode_data):
 
 
 def is_snow_conditions(temperature_data, amount_of_rain):
-    if amount_of_rain > 0.0 and temperature_data['TG']:
+    if amount_of_rain > 0.0 and temperature_data['TG'] < 0.0:
         return True
     else:
         return False
@@ -127,7 +127,7 @@ def main():
         # Input for the station id
         print("To stop enter 'q'")
         station_id = input("Enter Station id:")
-        print("Please wait while retreiving the data")
+        print("Please wait while retrieving the data")
         # Retrieve the data for the provided station id
         if (station_id.lower() == 'q'):
             break
