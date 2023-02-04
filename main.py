@@ -107,10 +107,11 @@ def get_temp(encode_data):
 
 
 def is_snow_conditions(temperature_data, amount_of_rain):
-    if amount_of_rain > 0.0 and temperature_data['TG'] < 0.0:
-        return True
-    else:
-        return False
+    if temperature_data['TG'] != 'missing':
+        if (amount_of_rain > 0.0) and (temperature_data['TG'] < 0.0):
+            return True
+
+    return False
 
 
 get_all_stations()
@@ -162,9 +163,9 @@ def main():
                 print("_________________________")
                 print('\n \n')
             except:
-                print("Error - please choose different station")
-            else:
-                print("Station Id is wrong")
+                print("Error while pulling the data - please choose different station")
+        else:
+            print("Station Id is wrong")
 
 
 if __name__ == '__main__':
