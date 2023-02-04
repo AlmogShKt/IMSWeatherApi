@@ -62,15 +62,36 @@ def get_station_name(station_id):
     return encode_data['name']
 
 
+def get_temp(encode_data):
+    temperature_data = {}
+    for channel_id in encode_data['data'][0]['channels']:
+        if channel_id['name'] == 'TDmax':
+            # TDMax - max temp
+            temperature_data.update({channel_id['name']: channel_id['value']})
+        if channel_id['name'] == 'TDmin':
+            # TDMax - max temp
+            temperature_data.update({channel_id['name']: channel_id['value']})
+        if channel_id['name'] == 'TG':
+            # TDMax - max temp
+            temperature_data.update({channel_id['name']: channel_id['value']})
+
+    return temperature_data
+
+def is_snow_conditions(temperature_data,amount_of_rain):
+    if amount_of_rain > 0.0 and temperature_data['TG']:
+        return True
+    else:
+        return False
+
 # Function to decode the response from the API
 def get_encode_data(data):
     return json.loads(data.text.encode('utf8'))
 
 
 def main():
-    while (True):
+    while True:
         # Input for the station id
-        print("To stop enter q")
+        print("To stop enter 'q'")
         station_id = input("Enter Station id:")
         # Retrieve the data for the provided station id
         if (station_id.lower() == 'q'):
@@ -87,9 +108,23 @@ def main():
             amount_of_rain = get_rain_value(encode_data)
             # Get the measurement time
             measurement_time = get_measurement_time(encode_data)
+            # Get the temperature data
+            temperature_data = get_temp(encode_data)
+            # Check if there is conditions for snow
+            is_snowing = is_snow_conditions(temperature_data,amount_of_rain)
 
-            print(
-                f"The amount of rain in {station_name} is {amount_of_rain}mm. The measurement time is {measurement_time} ")
+            print('\n \n')
+            print("_________________________")
+            print(f"Station Name: {station_name} | id: {station_id}")
+            print(f"Measurement time is: {measurement_time}")
+            print(f"The amount of rain is: {amount_of_rain}mm")
+            print(f"The Max temperature is: {temperature_data['TDmax']}°")
+            print(f"The Min temperature is: {temperature_data['TDmin']}°")
+            print(f"The ground temperature is: {temperature_data['TG']}°")
+            if is_snowing:
+                print("**There is snow conditions!!**")
+            print("_________________________")
+            print('\n \n')
         else:
             print("Station Id is wrong")
 
