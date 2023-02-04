@@ -13,7 +13,7 @@
 
 ## About
 Are you interested in keeping up with the local weather?
-*Do you woundring when there is snow on the ground?
+* Do you woundring when there is snow on the ground?
 * Do you woundring if to book a placinIn El-rom?
 * Are you tired of opening telegram groups and weather apps on your phone?  
 > You are in the right place!  
