@@ -122,7 +122,7 @@ def main():
         all_stations = get_all_stations()
         print_station_names(all_stations)
     else:
-        print("You can Find all station names and id here: ")
+        print("You can Find all station names and id here: https://github.com/AlmogShKt/IMSWeatherApi/edit/master/README.md#stations-id ")
     while True:
         # Input for the station id
         print("To stop enter 'q'")
