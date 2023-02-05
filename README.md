@@ -61,12 +61,14 @@ The amount of rain is: 10.2mm
 The Max temperature is: -1.5°
 The Min temperature is: -2.1°
 The ground temperature is: -1.4°
-**There is snow conditions!!**"
+**There is snow conditions!!**
 _________________________
 ```
 ___
 
 ## Stations ID
+> In some of the stations, not all channels available.  
+
 Station Name  | Station ID
 --------------|----------
 AVNE ETAN     | 2
