@@ -40,7 +40,7 @@ ___
     pip install python-dotenv
     ```
 
-3. Ask for ApiToken from MSI: <a href="mailto:ims@ims.gov.il">Email</a> , and follow the <a href = "https://ims.gov.il/he/ObservationDataAPI)">instructions</a>
+3. Ask for ApiToken from IMS: <a href="mailto:ims@ims.gov.il">Email</a> , and follow the <a href = "https://ims.gov.il/he/ObservationDataAPI)">instructions</a>
 
 
 4. Open new file, called `.env` and enter this line:  
