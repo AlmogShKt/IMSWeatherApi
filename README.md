@@ -1,7 +1,7 @@
 <h1 align="center">
   <br>
   <img src="https://github.com/AlmogShKt/IMSWeatherApi/blob/master/WeatherLogo.png" alt="WeatherMsiApiLogo" width="200"></a>
-  <br> MSI Weather API  <br>
+  <br> IMS Weather API  <br>
 </h1>
 
 <p align="center">
