@@ -11,6 +11,9 @@
   <a href="#rights">Rights</a> •
 </p>
 
+    <p align="center"> <img src="https://komarev.com/ghpvc/?username=IMSWeatherApi&label=Repo%20views&color=0e75b6&style=flat"  /> </p>
+
+
 ## About
 Are you interested in keeping up with the local weather?
 * Are you wondering when there is snow on the ground?
