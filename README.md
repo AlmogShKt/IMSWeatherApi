@@ -48,7 +48,7 @@ ___
 
 
 4. Open new file, called `.env` and enter this line:  
-`IMS_TOKEN = ApiToken replace_with_your_token`
+`IMS_TOKEN = {ApiToken replace_with_your_token}`
 
 5. Open terminal and run:  
 `~cd /{yourLocalPath}/WeatherApi/`  
