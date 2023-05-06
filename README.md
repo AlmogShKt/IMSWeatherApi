@@ -51,7 +51,7 @@ ___
 `IMS_TOKEN = ApiToken replace_with_your_token`
 
 5. Open terminal and run:  
-`~cd /yourLocalPath/WeatherApi/`  
+`~cd /{yourLocalPath}/WeatherApi/`  
 
 6. Run the `main.py` file:   
 `~python3 main.py`
